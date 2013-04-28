@@ -2,5 +2,8 @@ Revision history for App-cpangrep
 
 {{$NEXT}}
 
+0.02  2013-04-28 16:14:12 PDT
+        - Fix script installation issue
+
 0.01  2013-04-28 10:26:01 PDT
         - Initial release
