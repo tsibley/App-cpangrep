@@ -159,6 +159,8 @@ App::cpangrep - Grep CPAN from the command-line using grep.cpan.me
 
   cpangrep "\bpackage\s+App::cpangrep\b"
 
+  cpangrep --help
+
 =head1 DESCRIPTION
 
 App::cpangrep provides the C<cpangrep> program which is a command-line
