@@ -53,7 +53,7 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=App-cpangrep"
+         "web" : "https://github.com/tsibley/App-cpangrep/issues"
       },
       "homepage" : "https://github.com/tsibley/App-cpangrep",
       "repository" : {
