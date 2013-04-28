@@ -51,6 +51,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=App-cpangrep"
+      },
+      "homepage" : "https://github.com/tsibley/App-cpangrep",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/tsibley/App-cpangrep.git",
+         "web" : "https://github.com/tsibley/App-cpangrep"
+      }
+   },
    "version" : "0.01",
    "x_contributors" : [
       "Thomas Sibley <tsibley@cpan.org>"
