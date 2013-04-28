@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "Grep CPAN from the command-line using grep.cpan.me",
    "author" : [
       "Thomas Sibley <tsibley@cpan.org>"
    ],
@@ -36,6 +36,11 @@
       },
       "runtime" : {
          "requires" : {
+            "CPAN::DistnameInfo" : "0",
+            "HTTP::Tiny" : "0",
+            "JSON" : "2.27",
+            "Term::ANSIColor" : "0",
+            "URI::Escape" : "0",
             "perl" : "5.008005"
          }
       },
@@ -46,6 +51,9 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.01",
+   "x_contributors" : [
+      "Thomas Sibley <tsibley@cpan.org>"
+   ]
 }
 
