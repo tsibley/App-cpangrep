@@ -34,6 +34,7 @@ sub run {
         'h|help'    => \(my $help),
         'version'   => \(my $version),
 
+        'l'         => \(my $list),
         'server=s'  => \$SERVER,
     );
 
@@ -59,7 +60,11 @@ sub run {
         my $search = search($query)
             or return 2;
 
-        display($search);
+        if ($list) {
+            display_list($search);
+        } else {
+            display($search);
+        }
         return 0;
     }
     return 0;
@@ -75,6 +80,10 @@ Several operators are supported as well for advanced use.
 See <http://grep.cpan.me/about#re> for more information.
 
 Multiple query arguments will be joined with spaces for convenience.
+
+  -l            List only matching filenames.  Note that omitted results are
+                not mentioned, but your pattern is likely to match many more
+                files than output.
 
   --color       Enable colored output even if STDOUT isn't a terminal
   --no-color    Disable colored output
@@ -157,6 +166,20 @@ sub display {
         printf colored("→ %d more file%s matched in %s.\n\n", "MAGENTA"),
             $result->{truncated}, ($result->{truncated} != 1 ? "s" : ""), $dist->distvname
                 if $result->{truncated};
+    }
+}
+
+sub display_list {
+    my $search  = shift or return;
+    my $results = $search->{results} || [];
+    for my $result (@$results) {
+        my $fulldist = $result->{dist};
+           $fulldist =~ s{^(?=(([A-Z])[A-Z]))}{$2/$1/};
+        my $dist = CPAN::DistnameInfo->new($fulldist);
+
+        for my $file (@{$result->{files}}) {
+            print join("/", $dist->cpanid, $dist->distvname, $file->{file}), "\n";
+        }
     }
 }
 
