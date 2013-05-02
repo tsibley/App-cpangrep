@@ -139,12 +139,16 @@ sub display {
 
                 substr($snippet, $start, $len) = colored(substr($snippet, $start, $len), "BOLD RED");
 
+                if ($match->{line}) {
+                    my $ln       = $match->{line}[0] - (substr($snippet, 0, $start) =~ y/\n//);
+                    my $print_ln = sub {
+                        colored($ln++, "BLUE") . colored(":", "CYAN")
+                    };
+                    $snippet =~ s/^/$print_ln->()/mge;
+                }
+
                 chomp $snippet;
-                $snippet =~ s/^/  /mg;
-
                 print $snippet, color("reset"), "\n\n";
-
-                # XXX TODO: Display line numbers
             }
             printf "  → %d more match%s from this file.\n\n",
                 $file->{truncated}, ($file->{truncated} != 1 ? "es" : "")
