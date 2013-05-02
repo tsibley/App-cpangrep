@@ -2,6 +2,13 @@ Revision history for App-cpangrep
 
 {{$NEXT}}
 
+0.03  2013-05-01 21:45:54 PDT
+        - Smart color support
+        - Optionally use a different server
+        - Display line numbers if available from the server
+        - Colorize the truncated result notes so they don't blend into match snippets
+        - List files mode with -l
+
 0.02  2013-04-28 16:14:12 PDT
         - Fix script installation issue
 

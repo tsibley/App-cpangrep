@@ -6,7 +6,7 @@ use 5.008_005;
 use utf8;
 use open OUT => qw< :encoding(UTF-8) :std >;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Config;
 use URI::Escape qw(uri_escape);
