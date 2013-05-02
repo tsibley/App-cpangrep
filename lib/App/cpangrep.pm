@@ -14,6 +14,7 @@ use HTTP::Tiny;
 use JSON qw(decode_json);
 use CPAN::DistnameInfo;
 
+our $SERVER = "http://grep.cpan.me";
 our $COLOR;
 our $DEBUG;
 
@@ -32,6 +33,8 @@ sub run {
         'd|debug!'  => \$DEBUG,
         'h|help'    => \(my $help),
         'version'   => \(my $version),
+
+        'server=s'  => \$SERVER,
     );
 
     setup_colors() unless defined $COLOR and not $COLOR;
@@ -76,6 +79,9 @@ Multiple query arguments will be joined with spaces for convenience.
   --color       Enable colored output even if STDOUT isn't a terminal
   --no-color    Disable colored output
 
+  --server      Specifies an alternate server to use, for example:
+                    --server http://localhost:5000
+
   --debug       Print debug messages to stderr
   --help        Show this help and exit
   --version     Show version
@@ -83,8 +89,8 @@ Multiple query arguments will be joined with spaces for convenience.
     USAGE
 }
 
-sub search_url     { "http://grep.cpan.me/?q="    . uri_escape(shift) }
-sub search_api_url { "http://grep.cpan.me/api?q=" . uri_escape(shift) }
+sub search_url     { "$SERVER/?q="    . uri_escape(shift) }
+sub search_api_url { "$SERVER/api?q=" . uri_escape(shift) }
 
 sub search {
     my $query = shift;
