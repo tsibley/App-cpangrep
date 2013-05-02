@@ -150,11 +150,11 @@ sub display {
                 chomp $snippet;
                 print $snippet, color("reset"), "\n\n";
             }
-            printf "  → %d more match%s from this file.\n\n",
+            printf colored("  → %d more match%s from this file.\n\n", "MAGENTA"),
                 $file->{truncated}, ($file->{truncated} != 1 ? "es" : "")
                     if $file->{truncated};
         }
-        printf "→ %d more file%s matched in %s.\n\n",
+        printf colored("→ %d more file%s matched in %s.\n\n", "MAGENTA"),
             $result->{truncated}, ($result->{truncated} != 1 ? "s" : ""), $dist->distvname
                 if $result->{truncated};
     }
