@@ -23,15 +23,15 @@ my %WriteMakefileArgs = (
   "NAME" => "App::cpangrep",
   "PREREQ_PM" => {
     "CPAN::DistnameInfo" => 0,
-    "HTTP::Tiny" => 0,
     "JSON" => "2.27",
+    "LWP::UserAgent" => 0,
     "Term::ANSIColor" => 0,
     "URI::Escape" => 0
   },
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.03",
+  "VERSION" => "0.04",
   "test" => {
     "TESTS" => "t/*.t"
   }

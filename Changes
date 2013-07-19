@@ -2,6 +2,10 @@ Revision history for App-cpangrep
 
 {{$NEXT}}
 
+0.04  2013-07-19 16:01:40 PDT
+        - HTTP::Tiny → LWP::UserAgent for better proxy support (socks, https)
+        - Module::Build::Tiny → ExtUtils::MakeMaker for fewer build-time deps
+
 0.03  2013-05-01 21:45:54 PDT
         - Smart color support
         - Optionally use a different server
