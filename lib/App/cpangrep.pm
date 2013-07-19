@@ -10,7 +10,7 @@ our $VERSION = '0.03';
 
 use Config;
 use URI::Escape qw(uri_escape);
-use HTTP::Tiny;
+use LWP::UserAgent;
 use JSON qw(decode_json);
 use CPAN::DistnameInfo;
 
@@ -103,22 +103,24 @@ sub search_api_url { "$SERVER/api?q=" . uri_escape(shift) }
 
 sub search {
     my $query = shift;
-    my $ua    = HTTP::Tiny->new(
+    my $ua    = LWP::UserAgent->new(
         agent => "cpangrep/$VERSION",
     );
+    $ua->env_proxy;
 
     my $response = $ua->get( search_api_url($query) );
 
-    if (!$response->{success}) {
-        warn "Request failed: $response->{status} $response->{reason}\n";
+    if (not $response->is_success) {
+        warn "Request failed: ", $response->status_line, "\n";
         return;
     }
 
-    debug("Successfully received " . length($response->{content}) . " bytes");
+    my $content = $response->decoded_content;
+    debug("Successfully received " . length($content) . " bytes");
 
-    my $result = eval { decode_json($response->{content}) };
+    my $result = eval { decode_json($content) };
     if ($@ or not $result) {
-        warn "Error decoding response: $@\n";
+        warn "Error decoding JSON response: $@\n";
         return;
     }
     return $result;
