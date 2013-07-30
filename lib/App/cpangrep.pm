@@ -130,9 +130,9 @@ sub display {
     my $search  = shift or return;
     my $results = $search->{results} || [];
     printf "%d result%s.", $search->{count}, ($search->{count} != 1 ? "s" : "");
-    printf "  Showing first %d.\n", scalar @$results
-        if @$results;
-    print "\n";
+    printf "  Showing first %d.", scalar @$results
+        if @$results and @$results != $search->{count};
+    print "\n\n";
 
     for my $result (@$results) {
         my $fulldist = $result->{dist};
