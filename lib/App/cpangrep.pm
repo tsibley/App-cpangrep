@@ -13,6 +13,7 @@ use URI::Escape qw(uri_escape);
 use LWP::UserAgent;
 use JSON qw(decode_json);
 use CPAN::DistnameInfo;
+use List::Util qw(sum);
 
 our $SERVER = "http://grep.cpan.me";
 our $COLOR;
@@ -129,9 +130,15 @@ sub search {
 sub display {
     my $search  = shift or return;
     my $results = $search->{results} || [];
-    printf "%d result%s.", $search->{count}, ($search->{count} != 1 ? "s" : "");
-    printf "  Showing first %d.", scalar @$results
-        if @$results and @$results != $search->{count};
+    printf "%d result%s in %d file%s.",
+        $search->{count}, ($search->{count} != 1 ? "s" : ""),
+        scalar @$results, (@$results        != 1 ? "s" : "");
+
+    my $display_total = sum map { scalar @{$_->{results}} }
+                            map { @{$_->{files}} }
+                                @$results;
+    printf "  Showing first %d results.", $display_total
+        if $display_total and $display_total != $search->{count};
     print "\n\n";
 
     for my $result (@$results) {
