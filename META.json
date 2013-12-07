@@ -4,7 +4,7 @@
       "Thomas Sibley <tsibley@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.1, Dist::Zilla version 4.300032, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Dist::Milla version v1.0.1, Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "perl_5"
    ],
@@ -39,6 +39,7 @@
             "CPAN::DistnameInfo" : "0",
             "JSON" : "2.27",
             "LWP::UserAgent" : "0",
+            "List::Util" : "0",
             "Term::ANSIColor" : "0",
             "URI::Escape" : "0",
             "perl" : "5.008005"
@@ -62,6 +63,9 @@
          "web" : "https://github.com/tsibley/App-cpangrep"
       }
    },
-   "version" : "0.04"
+   "version" : "0.05",
+   "x_contributors" : [
+      "Thomas Sibley <trsibley@uw.edu>"
+   ]
 }
 

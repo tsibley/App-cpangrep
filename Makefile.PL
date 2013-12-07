@@ -25,13 +25,14 @@ my %WriteMakefileArgs = (
     "CPAN::DistnameInfo" => 0,
     "JSON" => "2.27",
     "LWP::UserAgent" => 0,
+    "List::Util" => 0,
     "Term::ANSIColor" => 0,
     "URI::Escape" => 0
   },
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -2,6 +2,9 @@ Revision history for App-cpangrep
 
 {{$NEXT}}
 
+0.05  2013-12-07 15:58:57 PST
+        - "Showing first N." should count matches in each file instead of files
+
 0.04  2013-07-19 16:01:40 PDT
         - HTTP::Tiny → LWP::UserAgent for better proxy support (socks, https)
         - Module::Build::Tiny → ExtUtils::MakeMaker for fewer build-time deps
