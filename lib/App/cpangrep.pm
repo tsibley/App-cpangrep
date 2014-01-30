@@ -155,6 +155,24 @@ sub display {
                 my ($start, $len) = @{$match->{match}};
                 $len -= $start;
 
+                # XXX TODO: Track down the grep.cpan.me api bug that causes
+                # this.  An example that fails for me today:
+                #
+                #   cpangrep dist:App-Prefix file:Changes '^\s*\[.+?\]\s*$'
+                #
+                # -trs, 29 Jan 2014
+                if (length $snippet < $start + $len) {
+                    warn colored("API returned an out of bounds match; skipping! (use --debug to see details)", "RED"),
+                         color("reset"), "\n";
+                    if ($DEBUG) {
+                        require Data::Dumper;
+                        debug("snippet: «$snippet» (length ", length $snippet, ")");
+                        debug("reported match starts at «$start», length «$len» (ends at «@{[$start+$len]}»)");
+                        debug("raw match response: ", Data::Dumper::Dumper($match));
+                    }
+                    next;
+                }
+
                 substr($snippet, $start, $len) = colored(substr($snippet, $start, $len), "BOLD RED");
 
                 if ($match->{line}) {
