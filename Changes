@@ -2,6 +2,10 @@ Revision history for App-cpangrep
 
 {{$NEXT}}
 
+0.06  2014-01-29 21:18:54 PST
+    - Guard against a grep.cpan.me api bug returning truncated snippets.  This
+      manifested as substr() out of bounds errors.
+
 0.05  2013-12-07 15:58:57 PST
         - "Showing first N." should count matches in each file instead of files
 
