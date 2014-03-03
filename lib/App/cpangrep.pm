@@ -122,6 +122,7 @@ sub search {
     my $result = eval { decode_json($content) };
     if ($@ or not $result) {
         warn "Error decoding JSON response: $@\n";
+        debug($content);
         return;
     }
     return $result;
