@@ -28,4 +28,4 @@ it under the same terms as Perl itself.
 
 # SEE ALSO
 
-[cpangrep](http://search.cpan.org/perldoc?cpangrep), [http://grep.cpan.me](http://grep.cpan.me)
+[cpangrep](https://metacpan.org/pod/cpangrep), [http://grep.cpan.me](http://grep.cpan.me)
