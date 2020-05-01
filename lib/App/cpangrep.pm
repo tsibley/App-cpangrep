@@ -11,7 +11,7 @@ our $VERSION = '0.07';
 use Config;
 use URI::Escape qw(uri_escape);
 use LWP::UserAgent;
-use JSON qw(decode_json);
+use JSON::MaybeXS qw(decode_json);
 use CPAN::DistnameInfo;
 use List::Util qw(sum);
 
