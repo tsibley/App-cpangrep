@@ -1,6 +1,7 @@
 Revision history for App-cpangrep
 
 {{$NEXT}}
+    - switched backend from JSON.pm to JSON::MaybeXS
 
 0.07  2014-10-25 12:33:38 PDT
     - Output through a pager by default
